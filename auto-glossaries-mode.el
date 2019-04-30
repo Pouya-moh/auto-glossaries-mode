@@ -1,4 +1,4 @@
-;;; auto-gls-mode.el
+;;; auto-glossaries-mode.el
 ;;
 ;; This little minor mode parses an acronym file and creates a list
 ;; out of it first. The aim is to facilitate the latex workflow of
@@ -28,7 +28,7 @@
 ;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
 
 
-(provide 'auto-gls-mode)
+(provide 'auto-glossaries-mode)
 
 (setq agls-acronym-file "acronyms.tex")
 (setq agls-acronym-list '())
@@ -70,11 +70,11 @@
   (if (= last-command-event 32)
       (agls-check-membership)))   
 
-(define-minor-mode auto-gls-mode
+(define-minor-mode auto-glossaries-mode
   "A simple minor mode to automatically surrond acronyms in gls macro in latex mode"
   :lighter " AGLS"
   (setq agls-acronym-list (agls-parse-acronym-file))
-  (if auto-gls-mode
+  (if auto-glossaries-mode
       (add-hook 'post-self-insert-hook
 		'agls-check-if-word nil t)
     (remove-hook 'post-self-insert-hook
